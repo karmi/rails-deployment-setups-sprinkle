@@ -4,7 +4,7 @@ package :ruby do
   patchlevel '302'
   source "ftp://ftp.ruby-lang.org/pub/ruby/1.8/ruby-#{version}-p#{patchlevel}.tar.gz"
   requires :ruby_dependencies
-  verify { has_executable "/usr/local/bin/ruby" }
+  verify { has_executable_with_version "/usr/local/bin/ruby", version }
 end
 
 package :ruby_dependencies do
