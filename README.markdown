@@ -31,13 +31,13 @@ You launch the application by running command:
       $ rails server mongrel --environment production
 
 In real life, there would be more than one application server instance running. However, the _mongrel_cluster_ Rubygem
-does not work with current versions of the _Ruby On Rails_ framework.
+does not work with current versions of the _Ruby On Rails_ framework, so the purpose of this recipe is purely didactic.
 
 
 ### 2. Nginx as a Reverse Proxy for Thin ###
 
-A variation on this old school setup is to use the [_Nginx_](http://en.wikipedia.org/wiki/Nginx) web server as a reverse proxy / load balancer
-for a cluster of [_Thin_](http://code.macournoyer.com/thin/) servers. Thin is a successor to Mongrel.
+A variation on this old school setup is to use the [_Nginx_](http://en.wikipedia.org/wiki/Nginx) web server as a reverse proxy /
+load balancer for a cluster of [_Thin_](http://code.macournoyer.com/thin/) servers.
 
 This setup is installed with the following command:
 
@@ -51,7 +51,9 @@ offering more power then connecting via TCP.
 
 You launch the application by running command:
 
-      $ thin --socket /tmp/thin.sock --server 3 --environment production --tag demo --rackup config.ru start
+      $ bundle exec thin --socket /tmp/thin.sock --server 3 --environment production --tag demo --rackup config.ru start
+
+A variation on this setup would be to use the [_Unicorn_](http://unicorn.bogomips.org/) webserver instead of _Thin_.
 
 
 ### 3. Phusion Passenger (mod_rails) ###
@@ -74,7 +76,7 @@ You launch the application by running command:
       $ touch tmp/restart.txt
 
 
-## Usage ##
+## Installation and Usage ##
 
 This repository contains number of recipes and configurations for installing software packages on a server via _Sprinkle_ and _Capistrano_:
 see _packages_ and _configurations_ directories.
@@ -84,7 +86,7 @@ To install one of the provided stacks to a [Ubuntu](http://www.ubuntu.com/server
 
     $ gem list bundler
 
-After downloading or cloning the repository, install the _Sprinkle_ gem:
+After downloading or cloning the repository, install the [_Sprinkle_](http://github.com/crafterm/sprinkle) gem:
 
     $ bundle install
 
@@ -92,9 +94,9 @@ Then you can setup a server by passing a recipe to the `sprinkle` tool:
 
     $ bundle exec sprinkle --script=3-rails-stack-passenger.rb <HOSTNAME>
 
-You can also preview packages and their dependecies:
+You can also preview packages, their dependencies and verifications:
 
-    $ bundle exec sprinkle --test --cloud --script=1-rails-stack-apache-mongrel.rb
+    $ bundle exec sprinkle --test --cloud --verbose --script=3-rails-stack-passenger.rb
 
 ## Information
 
