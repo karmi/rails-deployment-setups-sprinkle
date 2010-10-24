@@ -6,8 +6,8 @@ package :nginx, :provides => :webserver do
   end
 
   verify do
+    has_executable '/usr/sbin/nginx'
     has_executable '/etc/init.d/nginx'
-    # has_process 'nginx'
   end
 end
 
