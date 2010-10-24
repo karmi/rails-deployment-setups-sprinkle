@@ -1,6 +1,9 @@
 require 'helper'
 
 policy :rails_stack_apache_mongrel, :roles => :app do
+  requires :tools
+  requires :settings
+
   requires :ruby
 
   requires :apache
@@ -13,8 +16,6 @@ policy :rails_stack_apache_mongrel, :roles => :app do
   requires :sqlite
 
   requires :version_control
-  requires :tools
-  requires :settings
 end
 
 deployment do

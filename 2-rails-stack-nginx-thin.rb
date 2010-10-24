@@ -1,6 +1,9 @@
 require 'helper'
 
 policy :rails_stack_nginx_thin, :roles => :app do
+  requires :tools
+  requires :settings
+
   requires :ruby
 
   requires :nginx
@@ -14,8 +17,6 @@ policy :rails_stack_nginx_thin, :roles => :app do
   requires :sqlite
 
   requires :version_control
-  requires :tools
-  requires :settings
 end
 
 deployment do
