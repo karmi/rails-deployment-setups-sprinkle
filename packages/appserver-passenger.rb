@@ -24,8 +24,10 @@ package :passenger_configuration do
 
   noop { pre :install, 'mkdir -p /etc/apache2/extras' }
 
-  push_text File.read('configurations/passenger.conf'),     configuration_file, :sudo => true
-  push_text "Include #{configuration_file}\n", '/etc/apache2/apache2.conf',          :sudo => true
+  push_text File.read('configurations/passenger.conf'), configuration_file, :sudo => true
+  push_text "Include #{configuration_file}\n", '/etc/apache2/apache2.conf', :sudo => true
+
+  noop { pre :install, '/etc/init.d/apache2 restart' }
 
   verify do
     has_file      configuration_file
