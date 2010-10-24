@@ -12,13 +12,16 @@ end
 
 # Run the application server with this command:
 #
-#   thin --socket /tmp/thin.sock --server 3 --environment production --tag demo --rackup config.ru start
+#   bundle exec thin --socket /tmp/thin.sock --server 3 --environment production --tag demo --rackup config.ru start
 #
 package :thin_configuration do
   description "Nginx as Reverse Proxy Configuration for Thin"
   configuration_file = '/var/nginx/thin.conf'
 
-  noop { pre :install, 'mkdir -p /var/nginx/', 'rm /etc/nginx/sites-available/default'  }
+  noop do
+    pre :install, 'mkdir -p /var/nginx/'
+    pre :install, 'rm /etc/nginx/sites-available/default'
+  end
   push_text File.read('configurations/thin.conf'), configuration_file, :sudo => true
 
   verify do
