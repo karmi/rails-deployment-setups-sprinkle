@@ -12,6 +12,8 @@ package :build_essential do
   end
 
   verify do
+    has_executable 'gcc'
+    has_executable 'g++'
     has_executable '/bin/bash'
     has_symlink    '/bin/sh', '/bin/bash'
   end
