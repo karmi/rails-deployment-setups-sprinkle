@@ -94,6 +94,9 @@ Then you can setup a server by passing a recipe to the `sprinkle` tool:
 
     $ bundle exec sprinkle --script=3-rails-stack-passenger.rb <HOSTNAME>
 
+The installation of an Apache/Passenger stack takes about 15 minutes on a Ubuntu 10.04 Server running
+inside VMWare (2 cores, 512MB RAM, 2GB HDD) on a Mac Book Air.
+
 You can also preview packages, their dependencies and verifications:
 
     $ bundle exec sprinkle --test --cloud --verbose --script=3-rails-stack-passenger.rb
