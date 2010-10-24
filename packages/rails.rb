@@ -7,8 +7,7 @@ package :rails do
 
   gem 'rails' do
     post :install, "mkdir -p #{applications_directory}"
-    # TODO: Rethink the permissions issue, probably use a 'deployer' user, etc
-    # post :install, "chown -R karmi:admin #{applications_directory}"
+    post :install, "chown -R $(whoami):admin #{applications_directory}"
   end
 
   verify do
