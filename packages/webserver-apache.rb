@@ -15,7 +15,6 @@ package :apache, :provides => :webserver do
     has_file '/etc/apache2/mods-enabled/rewrite.load'
     has_file '/etc/apache2/mods-enabled/proxy_http.load'
     has_file '/etc/apache2/mods-enabled/proxy_connect.load'
-    has_file '/etc/apache2/mods-enabled/proxy_balancer.conf'
     has_file '/etc/apache2/mods-enabled/proxy_balancer.load'
     has_file '/etc/apache2/mods-enabled/expires.load'
     has_file '/etc/apache2/mods-enabled/headers.load'
