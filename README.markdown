@@ -90,7 +90,7 @@ After downloading or cloning the repository, install the _Sprinkle_ gem:
 
 Then you can setup a server by passing a recipe to the `sprinkle` tool:
 
-    $ bundle exec sprinkle --script=install.rb <HOSTNAME>
+    $ bundle exec sprinkle --script=3-rails-stack-passenger.rb <HOSTNAME>
 
 You can also preview packages and their dependecies:
 
