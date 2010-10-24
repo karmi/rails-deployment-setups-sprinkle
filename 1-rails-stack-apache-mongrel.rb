@@ -19,9 +19,7 @@ end
 
 deployment do
 
-  delivery :capistrano do
-    recipes 'deploy'
-  end
+  delivery :capistrano
 
   source do
     prefix   '/usr/local'           # where all source packages will be configured to install
