@@ -1,5 +1,5 @@
 package :tools do
-  description "Various tools needed by the application"
+  description "Common tools needed by applications or for operations"
 
   packages = %w[ vim screen curl imagemagick ntp ]
 
