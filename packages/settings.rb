@@ -1,42 +1,11 @@
 package :settings do
-  noop { post :install, "echo '' > ~/.vimrc" }
-  push_text <<-'VIMCONFIG', '~/.vimrc'
-    set nocompatible
-    set background=dark
-    set ignorecase
-    set smartcase
+  noop do
+    pre :install, "echo '' > ~/.vimrc"
+  end
 
-    " Syntax
-    syntax enable
-    syntax on
+  transfer 'configurations/vimrc', '~/.vimrc'
 
-    " Encoding
-    set encoding=utf8
-
-    " Line numbering
-    set number
-
-    " Formatting
-    set tabstop=2
-    set shiftwidth=2
-    set softtabstop=2
-    set autoindent
-    set expandtab
-    set smarttab
-    set backspace=start,indent
-    set cinwords=if,else,while,do,for,switch,case
-    set cindent
-
-    " No beeping
-    set visualbell
-
-    " Highlight search 
-    set hlsearch
-
-    " Show other possibilites at tab completion
-    set wildmenu
-
-    " Maps autocomplete to tab
-    imap <Tab> <C-N>
-  VIMCONFIG
+  verify do
+    has_file '~/.vimrc'
+  end
 end
