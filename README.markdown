@@ -4,7 +4,7 @@ This repository contains configuration files for installing couple of alternativ
 
 It's purpose is mainly didatic, since I use it at workshops teaching Rails deployment, hosting, infrastructure.
 
-But it can be equally well used to provision a box with infrastructure for a Rails application deployment.
+But it can be equally well used to provision a clean machine with infrastructure for a Rails application deployment.
 
 There are three recipes for the [Sprinkle](http://github.com/crafterm/sprinkle) server provisioning tool,
 showing the dominant setups for deploying Rack-based applications as of today:
@@ -15,11 +15,11 @@ This is historically one of the first “real” setups for deploying _Rails_ (i
 
 This setup is installed with the following command:
 
-    $ bundle exec sprinkle --script=1-rails-stack-apache-mongrel.rb <HOSTNAME>
+    $ bundle exec sprinkle --script=1-rails-stack-apache-mongrel.rb
 
 and the web server configuration for this setup is in the `configurations/mongrel.conf` file.
 
-In 2006, Zed Shaw wrote [_Mongrel_](http://en.wikipedia.org/wiki/Mongrel_(web_server)), a Ruby webserver,
+In 2006, Zed Shaw wrote [_Mongrel_](http://rubyforge.org/projects/mongrel), a Ruby webserver,
 which could be easily proxied to a full-fledged webserver, such as [_Apache_](http://en.wikipedia.org/wiki/Apache_HTTP_Server).
 
 This way, multiple _Mongrel_ instances can be launched, and the front-end web server load balances between them,
@@ -41,7 +41,7 @@ load balancer for a cluster of [_Thin_](http://code.macournoyer.com/thin/) serve
 
 This setup is installed with the following command:
 
-    $ bundle exec sprinkle --script=2-rails-stack-nginx-thin.rb <HOSTNAME>
+    $ bundle exec sprinkle --script=2-rails-stack-nginx-thin.rb
 
 and the web server configuration for this setup is in the `configurations/thin.conf` file.
 
@@ -63,7 +63,7 @@ for _Apache_ or _Nginx_ web servers. In fact, it is currently the recommended se
 
 This setup is installed with the following command:
 
-    $ bundle exec sprinkle --script=3-rails-stack-passenger.rb <HOSTNAME>
+    $ bundle exec sprinkle --script=3-rails-stack-passenger.rb
 
 and the web server configuration for this setup is in the `configurations/passenger.conf` file.
 
@@ -78,15 +78,21 @@ You launch the application by running command:
 
 ## Installation and Usage ##
 
-This repository contains number of recipes and configurations for installing software packages on a server via _Sprinkle_ and _Capistrano_:
-see _packages_ and _configurations_ directories.
+This repository contains number of recipes and configurations for installing software packages
+via [_Sprinkle_](http://github.com/crafterm/sprinkle) and [_Capistrano_](http://github.com/capistrano/capistrano) tools.
 
+See _packages_ and _configurations_ directories for details.
 
-To install one of the provided stacks to a [Ubuntu](http://www.ubuntu.com/server) server, you need to have the [_Bundler_](http://gembundler.com/) gem:
+You run the commands locally, and they are being run on the remote machine via _Capistrano_.
 
-    $ gem list bundler
+First, you'll need a [Ubuntu](http://www.ubuntu.com/server) based [VPS](http://en.wikipedia.org/wiki/Virtual_private_server) reachable by SSH.
 
-After downloading or cloning the repository, install the [_Sprinkle_](http://github.com/crafterm/sprinkle) gem:
+To install one of the provided stacks to the server, you need to have the
+[_Bundler_](http://gembundler.com/) gem installed locally:
+
+    $ gem install bundler
+
+After downloading or cloning the repository, install the dependencies:
 
     $ bundle install
 
@@ -99,15 +105,16 @@ Then, you can setup a server by passing a recipe to the `sprinkle` tool:
     $ bundle exec sprinkle --script=3-rails-stack-passenger.rb
 
 The installation of an Apache/Passenger stack takes about 15 minutes on a Ubuntu 10.04 Server running
-inside VMWare (2 cores, 512MB RAM, 2GB HDD) on a Mac Book Air.
+inside VMWare (1 core, 256MB RAM, 2GB HDD) on a Mac Book Air.
 
 You can also preview packages, their dependencies and verifications:
 
     $ bundle exec sprinkle --test --cloud --verbose --script=3-rails-stack-passenger.rb
 
+
 ## Information
 
-For more information, please see: [http://github.com/crafterm/sprinkle](http://github.com/crafterm/sprinkle/tree/master/README.markdown)
+For more information, please see the _Sprinkle_ [readme](http://github.com/crafterm/sprinkle/tree/master/README.markdown).
 
 ---
 
