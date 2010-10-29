@@ -12,5 +12,3 @@ set  :user, '<CHANGE THIS TO YOUR USER>'
 # set  :run_method, :run
 #
 default_run_options[:pty] = true
-
-puts "\e[1mRunning installation on host #{hostname}\n\e[0m"
