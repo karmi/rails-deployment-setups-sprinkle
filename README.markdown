@@ -116,6 +116,12 @@ You can also preview packages, their dependencies and verifications:
 
 For more information, please see the _Sprinkle_ [readme](http://github.com/crafterm/sprinkle/tree/master/README.markdown).
 
+The recipes and configurations were adapted from these sources:
+
+* <http://github.com/crafterm/sprinkle/tree/master/examples/>
+* <http://github.com/benschwarz/passenger-stack>
+* <http://github.com/tristandunn/sprinkle-linode>
+
 ---
 
 [Karel Minarik](http://karmi.cz)
