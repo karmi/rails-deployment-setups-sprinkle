@@ -7,7 +7,7 @@ package :rails do
 
   gem 'rails' do
     post :install, "mkdir -p #{applications_directory}"
-    post :install, "chown -R $(whoami):admin #{applications_directory}"
+    post :install, "chown -R $(whoami):www-data #{applications_directory}"
   end
 
   verify do
