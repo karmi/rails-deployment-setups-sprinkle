@@ -26,7 +26,7 @@ end
 package :apache_source, :provides => :webserver do
   requires :build_essential, :apache_dependencies
   description 'Apache 2 HTTP Server'
-  version '2.2.16'
+  version '2.2.21'
 
   source "http://www.apache.org/dist/httpd/httpd-#{version}.tar.bz2" do
     enable %w( mods-shared=all proxy proxy-balancer proxy-http rewrite cache headers ssl deflate so )
@@ -47,16 +47,19 @@ package :apache_dependencies do
   # TODO: Verify Apache dependencies
 end
 
-
 package :apache_etag_support do
   apache_conf = '/etc/apache2/apache2.conf'
-  push_text "FileETag MTime Size\n", '/etc/apache2/apache2.conf', :sudo => true
+  push_text <<-'CONFIG', apache_conf, :sudo => true
+
+FileETag MTime Size
+  CONFIG, '/etc/apache2/apache2.conf', :sudo => true
   verify { file_contains apache_conf, "FileETag"}
 end
 
 package :apache_deflate_support do
   apache_conf = '/etc/apache2/apache2.conf'
   push_text <<-'CONFIG', apache_conf, :sudo => true
+
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/css text/html text/javascript application/javascript application/x-javascript text/js text/plain text/xml
   <IfModule mod_headers.c>
