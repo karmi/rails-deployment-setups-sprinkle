@@ -1,14 +1,14 @@
 package :passenger, :provides => :appserver do
   requires :apache, :rubygems
   description 'Passenger (mod_rails) for Apache'
-  version '3.0.0'
+  version '3.0.9'
   gem 'passenger', :version => version do
     post :install, 'passenger-install-apache2-module --auto'
   end
 
   verify do
     has_gem  'passenger', version
-    has_file "/usr/local/lib/ruby/gems/1.8/gems/passenger-#{version}/ext/apache2/mod_passenger.so"
+    has_file "/usr/local/lib/ruby/gems/1.9.1/gems/passenger-#{version}/ext/apache2/mod_passenger.so"
   end
 
   optional :passenger_configuration
@@ -27,7 +27,7 @@ package :passenger_configuration do
   push_text File.read('configurations/passenger.conf'), configuration_file, :sudo => true
   push_text "Include #{configuration_file}\n", '/etc/apache2/apache2.conf', :sudo => true
 
-  noop { pre :install, '/etc/init.d/apache2 restart' }
+  noop { post :install, '/etc/init.d/apache2 restart' }
 
   verify do
     has_file      configuration_file
