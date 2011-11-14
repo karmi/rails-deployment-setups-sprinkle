@@ -1,7 +1,7 @@
 package :thin, :provides => :appserver do
   requires :build_essential, :rubygems
   description 'Thin Web Server'
-  version '1.2.7'
+  version '1.3.0'
 
   gem 'thin', :version => version
   
@@ -35,6 +35,8 @@ package :nginx_configuration do
   configuration_file = '/etc/nginx/nginx.conf'
 
   push_text 'include /var/nginx/thin.conf;', configuration_file, :sudo => true
+
+  noop { post :install, '/etc/init.d/nginx restart' }
 
   verify do
     has_file      configuration_file
