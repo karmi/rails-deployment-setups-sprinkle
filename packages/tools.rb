@@ -3,7 +3,8 @@ package :tools do
 
   packages = %w[ vim screen curl imagemagick ntp ]
 
-  post :install, 'ntpdate ntp.ubuntu.com'
-
-  apt packages
+  apt packages do
+    pre  :install, 'apt-get update'
+    post :install, 'ntpdate ntp.ubuntu.com'
+  end
 end
