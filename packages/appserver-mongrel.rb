@@ -20,6 +20,7 @@ package :mongrel_configuration do
 
   noop do
     pre  :install, 'mkdir -p /etc/apache2/extras'
+    post :install, '/etc/init.d/apache2 restart'
   end
 
   push_text File.read('configurations/mongrel.conf'), configuration_file, :sudo => true
