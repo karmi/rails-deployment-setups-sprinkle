@@ -12,7 +12,7 @@ end
 package :sqlite_ruby_driver do
   requires :rubygems
   description 'Ruby SQLite3 library.'
-  apt 'libsqlite3-dev libsqlite3-ruby1.8'
+  apt 'libsqlite3-dev libsqlite3-ruby1.9.1'
   gem 'sqlite3-ruby'
 
   verify do
