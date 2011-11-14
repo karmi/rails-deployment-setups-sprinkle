@@ -1,4 +1,4 @@
-require 'helper'
+require File.expand_path('../helper', __FILE__)
 
 policy :rails_stack_passenger, :roles => :app do
   requires :tools
