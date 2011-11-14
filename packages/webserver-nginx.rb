@@ -14,9 +14,9 @@ end
 package :nginx_source, :provides => :webserver do
   requires :build_essential, :nginx_dependencies
   description 'Nginx Web Server'
-  version '0.8.52'
-  
-  source "http://sysoev.ru/nginx/nginx-#{version}.tar.gz" do
+  version '1.1.7'
+
+  source "http://nginx.org/download/nginx-#{version}.tar.gz" do
     post :install, '/etc/init.d/nginx start'
   end
 
