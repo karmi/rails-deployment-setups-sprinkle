@@ -2,3 +2,5 @@
 tmp/
 Gemfile.lock
 deploy.rb
+.vagrant
+scratch.txt
