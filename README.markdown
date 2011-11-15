@@ -28,7 +28,7 @@ with different application servers such as _Unicorn_ or _Thin_.
 
 You launch the application by running command:
 
-      $ rails server mongrel --environment production
+      $ bundle exec rails server mongrel --environment production
 
 In real life, there would be more than one application server instance running. However, the _mongrel_cluster_ Rubygem
 does not work with current versions of the _Ruby On Rails_ framework, so the purpose of this recipe is purely didactic.
@@ -51,7 +51,7 @@ offering more power then connecting via TCP.
 
 You launch the application by running command:
 
-      $ bundle exec thin --socket /tmp/thin.sock --server 3 --environment production --tag demo --rackup config.ru start
+      $ bundle exec thin --socket /tmp/thin.sock --server 3 --environment production --tag demoapp --rackup config.ru start
 
 A variation on this setup would be to use the [_Unicorn_](http://unicorn.bogomips.org/) webserver instead of _Thin_.
 
