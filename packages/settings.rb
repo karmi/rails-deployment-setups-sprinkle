@@ -1,9 +1,7 @@
 package :settings do
-  noop do
-    pre :install, "echo '' > ~/.vimrc"
-  end
+  description "Custom settings"
 
-  transfer 'configurations/vimrc', '~/.vimrc'
+  push_text File.read('configurations/vimrc'), '~/.vimrc', :sudo => true
 
   verify do
     has_file '~/.vimrc'
