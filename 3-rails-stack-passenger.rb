@@ -1,5 +1,11 @@
 require File.expand_path('../helper', __FILE__)
 
+# The application is started automagically. Restart with:
+#
+#     $ cd /var/applications/demo && touch tmp/restart.txt
+#
+#
+
 policy :rails_stack_passenger, :roles => :app do
   requires :tools
   requires :settings

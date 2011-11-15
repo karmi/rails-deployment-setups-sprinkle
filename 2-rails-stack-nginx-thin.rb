@@ -1,5 +1,11 @@
 require File.expand_path('../helper', __FILE__)
 
+# Start the application with:
+#
+#     $ cd /var/applications/demo && bundle exec thin --socket /tmp/thin.sock --server 3 --environment production --tag demoapp --rackup config.ru start
+#
+#
+
 policy :rails_stack_nginx_thin, :roles => :app do
   requires :tools
   requires :settings

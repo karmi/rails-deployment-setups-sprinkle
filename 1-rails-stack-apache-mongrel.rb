@@ -1,5 +1,11 @@
 require File.expand_path('../helper', __FILE__)
 
+# Start the application with:
+#
+#     $ cd /var/applications/demo && bundle exec rails server mongrel --environment production
+#
+#
+
 policy :rails_stack_apache_mongrel, :roles => :app do
   requires :tools
   requires :settings
