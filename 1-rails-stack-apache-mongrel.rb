@@ -20,7 +20,9 @@ end
 
 deployment do
 
-  delivery :capistrano
+  delivery :capistrano do
+    recipes ENV['RECIPE'] || 'deploy'
+  end
 
   source do
     prefix   '/usr/local'           # where all source packages will be configured to install
