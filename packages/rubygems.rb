@@ -7,5 +7,5 @@ package :rubygems do
     custom_install 'ruby setup.rb'
   end
 
-  verify { has_executable '/usr/local/bin/gem' }
+  verify { has_executable_with_version '/usr/local/bin/gem', version }
 end
