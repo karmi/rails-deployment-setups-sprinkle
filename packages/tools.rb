@@ -5,6 +5,6 @@ package :tools do
 
   apt packages do
     pre  :install, 'apt-get update'
-    post :install, 'ntpdate ntp.ubuntu.com'
+    post :install, 'ntpdate -u ntp.ubuntu.com'
   end
 end
