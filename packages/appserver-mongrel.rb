@@ -18,14 +18,13 @@ package :mongrel_configuration do
   description "Apache as Reverse Proxy Configuration for Mongrel"
   configuration_file = '/etc/apache2/extras/mongrel.conf'
 
-  noop do
+  push_text File.read('configurations/mongrel.conf'), configuration_file, :sudo => true do
     pre  :install, 'mkdir -p /etc/apache2/extras'
-    post :install, '/etc/init.d/apache2 restart'
   end
 
-  push_text File.read('configurations/mongrel.conf'), configuration_file, :sudo => true
-
-  push_text "Include #{configuration_file}", '/etc/apache2/apache2.conf', :sudo => true
+  push_text "Include #{configuration_file}", '/etc/apache2/apache2.conf', :sudo => true do
+    post :install, '/etc/init.d/apache2 restart'
+  end
 
   verify do
     has_file configuration_file

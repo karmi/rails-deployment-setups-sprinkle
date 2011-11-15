@@ -18,11 +18,10 @@ package :thin_configuration do
   description "Nginx as Reverse Proxy Configuration for Thin"
   configuration_file = '/var/nginx/thin.conf'
 
-  noop do
+  push_text File.read('configurations/thin.conf'), configuration_file, :sudo => true do
     pre :install, 'mkdir -p /var/nginx/'
     pre :install, 'rm /etc/nginx/sites-available/default'
   end
-  push_text File.read('configurations/thin.conf'), configuration_file, :sudo => true
 
   verify do
     has_file      configuration_file
@@ -34,9 +33,9 @@ package :nginx_configuration do
   description "Load Thin cluster configuration in Nginx configuration file"
   configuration_file = '/etc/nginx/nginx.conf'
 
-  push_text 'include /var/nginx/thin.conf;', configuration_file, :sudo => true
-
-  noop { post :install, '/etc/init.d/nginx restart' }
+  push_text 'include /var/nginx/thin.conf;', configuration_file, :sudo => true do
+    post :install, '/etc/init.d/nginx restart'
+  end
 
   verify do
     has_file      configuration_file
