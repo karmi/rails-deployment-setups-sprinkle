@@ -7,7 +7,7 @@ package :ruby do
   requires :ruby_dependencies
   verify { has_executable_with_version "/usr/local/bin/ruby", version }
 
-  noop { pre :install, 'apt-get purge ruby rubygems' }
+  noop { pre :install, 'apt-get purge ruby ruby1.9 ruby1.9.1 rubygems1.8 rubygems1.9 rubygems1.9.1' }
 end
 
 package :ruby_dependencies do
