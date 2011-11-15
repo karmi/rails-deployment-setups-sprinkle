@@ -13,6 +13,7 @@ say_status  "Rubygems", "Adding Rubygems into Gemfile...\n", :yellow
 puts        '-'*80, ''; sleep 1
 
 gem 'thin',    '1.3.0'
+gem 'mongrel', '1.2.0.pre2'
 
 git :add => '.'
 git :commit => "-m 'Added gems'"
