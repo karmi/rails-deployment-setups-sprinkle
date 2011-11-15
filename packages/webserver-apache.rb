@@ -52,7 +52,8 @@ package :apache_etag_support do
   push_text <<-'CONFIG', apache_conf, :sudo => true
 
 FileETag MTime Size
-  CONFIG, '/etc/apache2/apache2.conf', :sudo => true
+  CONFIG
+
   verify { file_contains apache_conf, "FileETag"}
 end
 
@@ -67,6 +68,7 @@ package :apache_deflate_support do
   </IfModule>
 </IfModule>
   CONFIG
+
   verify { file_contains apache_conf, "DEFLATE"}
 end
 
@@ -74,11 +76,12 @@ package :apache_expires_support do
   apache_conf = '/etc/apache2/apache2.conf'
   push_text <<-'CONFIG', apache_conf, :sudo => true
 <IfModule mod_expires.c>
-  <FilesMatch "\.(jpg|gif|png|css|js)$">
-       ExpiresActive on
+  <FilesMatch "\.(ico|css|js|gif|jpe?g|png)\?[0-9]+$">
+       ExpiresActive On
        ExpiresDefault "access plus 1 year"
    </FilesMatch>
 </IfModule>
   CONFIG
+
   verify { file_contains apache_conf, "ExpiresActive"}
 end
