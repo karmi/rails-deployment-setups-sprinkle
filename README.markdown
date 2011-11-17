@@ -17,7 +17,7 @@ This setup is installed with the following command:
 
     $ bundle exec sprinkle --script=1-rails-stack-apache-mongrel.rb
 
-and the web server configuration for this setup is in the `configurations/mongrel.conf` file.
+and the web server configuration for this setup is in the [`configurations/mongrel.conf`](http://github.com/karmi/rails-deployment-setups-sprinkle/blob/master/configurations/mongrel.conf) file.
 
 In 2006, Zed Shaw wrote [_Mongrel_](http://rubyforge.org/projects/mongrel), a Ruby webserver,
 which could be easily proxied to a full-fledged webserver, such as [_Apache_](http://en.wikipedia.org/wiki/Apache_HTTP_Server).
@@ -43,7 +43,7 @@ This setup is installed with the following command:
 
     $ bundle exec sprinkle --script=2-rails-stack-nginx-thin.rb
 
-and the web server configuration for this setup is in the `configurations/thin.conf` file.
+and the web server configuration for this setup is in the `[configurations/thin.conf](http://github.com/karmi/rails-deployment-setups-sprinkle/blob/master/configurations/thin.conf)` file.
 
 In our setup, Thin is connected to Nginx via [UNIX domain sockets](http://en.wikipedia.org/wiki/Unix_domain_socket)
 (see [article](http://macournoyer.wordpress.com/2008/01/26/get-intimate-with-your-load-balancer-tonight/)),
@@ -65,7 +65,7 @@ This setup is installed with the following command:
 
     $ bundle exec sprinkle --script=3-rails-stack-passenger.rb
 
-and the web server configuration for this setup is in the `configurations/passenger.conf` file.
+and the web server configuration for this setup is in the `[configurations/passenger.conf](http://github.com/karmi/rails-deployment-setups-sprinkle/blob/master/configurations/passenger.conf)` file.
 
 _Phusion Passenger_ is distributed and [installed](http://www.modrails.com/install.html) as a [_Rubygem_](http://rubygems.org/).
 The package includes a installer script to check dependencies and install the module into the web server.
