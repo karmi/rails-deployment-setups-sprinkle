@@ -2,9 +2,14 @@
 #
 #
 # -- Application configuration
+#
+# Note: The default Vagrant box IP is "33.33.33.10"
+#
 role :app,  '<CHANGE THIS TO YOUR SERVER IP>', :primary => true
 
 # --- SSH connection configuration
+#
+# Note: The default Vagrant user is "vagrant"
 #
 set  :user, '<CHANGE THIS TO YOUR USER>'
 #
