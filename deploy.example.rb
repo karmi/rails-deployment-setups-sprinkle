@@ -14,7 +14,7 @@ set  :user, '<CHANGE THIS TO YOUR USER>'
 # ssh_options[:port] = 22
 #
 # -   Authenticate with key pair, not password
-# ssh_options[:keys] = [ File.dirname('/path/to/your/private/key') ]
+# ssh_options[:keys] = ['/path/to/your/private/key']
 #
 # -   Use sudo
 # set  :use_sudo, false
