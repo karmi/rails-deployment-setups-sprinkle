@@ -17,7 +17,7 @@ This is historically one of the first “real” setups for deploying _Rails_ (i
 
 This setup is installed with the following command:
 
-    $ bundle exec sprinkle --script=1-rails-stack-apache-mongrel.rb
+    $ sprinkle --script=1-rails-stack-apache-mongrel.rb --verbose
 
 and the web server configuration for this setup is in the [`configurations/mongrel.conf`](http://github.com/karmi/rails-deployment-setups-sprinkle/blob/master/configurations/mongrel.conf) file.
 
@@ -30,7 +30,7 @@ This setup is still widely used with different, modern Ruby application servers 
 
 You launch the application by running this command in the application folder:
 
-      $ bundle exec rails server mongrel --environment production
+      $ rails server mongrel --environment production
 
 In real life, there would be more than one application server instance running.
 
@@ -42,7 +42,7 @@ load balancer for a cluster of [_Thin_](http://code.macournoyer.com/thin/) serve
 
 This setup is installed with the following command:
 
-    $ bundle exec sprinkle --script=2-rails-stack-nginx-thin.rb
+    $ sprinkle --script=2-rails-stack-nginx-thin.rb --verbose
 
 and the web server configuration for this setup is in the [`configurations/thin.conf`](http://github.com/karmi/rails-deployment-setups-sprinkle/blob/master/configurations/thin.conf) file.
 
@@ -52,7 +52,7 @@ offering more power then connecting via TCP.
 
 You launch the application by running this command in the application folder:
 
-      $ bundle exec thin --socket /tmp/thin.sock --server 3 --environment production --tag demoapp --rackup config.ru start
+      $ thin --socket /tmp/thin.sock --server 3 --environment production --tag demoapp --rackup config.ru start
 
 A variation on this setup would be to use eg. the [_Unicorn_](http://unicorn.bogomips.org/) webserver instead of _Thin_.
 
@@ -66,7 +66,7 @@ for _Apache_ or _Nginx_ web servers. In fact, it is currently the recommended se
 
 This setup is installed with the following command:
 
-    $ bundle exec sprinkle --script=3-rails-stack-passenger.rb
+    $ sprinkle --script=3-rails-stack-passenger.rb --verbose
 
 and the web server configuration for this setup is in the [`configurations/passenger.conf`](http://github.com/karmi/rails-deployment-setups-sprinkle/blob/master/configurations/passenger.conf) file.
 
@@ -101,14 +101,10 @@ You may of course use any other virtualization technology or use a “live” vi
 with the repository allows you to automatically create a new Ubuntu server
 in the [Amazon Elastic Compute Cloud](http://aws.amazon.com/console/).
 
-To install one of the provided stacks to the server, you need to have the
-[_Bundler_](http://gembundler.com/) gem installed locally:
+To install one of the provided stacks to the server, install the [[_Sprinkle_](http://rubygems.org/gems/sprinkle)]
+gem first:
 
-    $ gem install bundler
-
-After downloading or cloning the repository, install the dependencies:
-
-    $ bundle install
+    $ gem install sprinkle
 
 Copy the `deploy.example.rb` file and customize it with the connection details to your server (SSH user, server IP, etc):
 
@@ -116,14 +112,14 @@ Copy the `deploy.example.rb` file and customize it with the connection details t
 
 Now, you can setup a server by passing a recipe to the `sprinkle` tool:
 
-    $ bundle exec sprinkle --script=3-rails-stack-passenger.rb
+    $ sprinkle --script=3-rails-stack-passenger.rb --verbose
 
 The installation of an Apache/Passenger stack takes about 13 minutes on a Ubuntu 10.04 Server running
 inside VMWare (1 core, 256MB RAM, 2GB HDD) on a 2011 Mac Book Air.
 
 You can also preview packages, their dependencies and verifications by running this command:
 
-    $ bundle exec sprinkle --test --cloud --verbose --script=3-rails-stack-passenger.rb
+    $ sprinkle --test --cloud --verbose --script=3-rails-stack-passenger.rb
 
 
 ## Information
