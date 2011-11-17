@@ -1,7 +1,12 @@
 # Create, provision and destroy virtual servers for these examples at Amazon EC2
 # ==============================================================================
 
-require 'fog'
+begin
+  require 'fog'
+rescue LoadError
+  puts "[!] Please install the 'fog' gem:", "", "  $ gem install fog", ""
+  exit(1)
+end
 
 STDOUT.sync = true
 
