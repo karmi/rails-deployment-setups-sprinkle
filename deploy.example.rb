@@ -16,8 +16,12 @@ set  :user, '<CHANGE THIS TO YOUR USER>'
 # -   Authenticate with key pair, not password
 # ssh_options[:keys] = ['/path/to/your/private/key']
 #
+# Configuration for the Vagrant box:
+#
+ssh_options[:keys] = File.join(File.dirname(`gem which vagrant`.strip), '../keys/vagrant')
+#
 # -   Use sudo
-# set  :use_sudo, false
+set  :use_sudo, true
 #
 # -   Declare intareactive terminal
 default_run_options[:pty] = true
