@@ -77,6 +77,9 @@ package :apache_expires_support do
   push_text <<-'CONFIG', apache_conf, :sudo => true
 <IfModule mod_expires.c>
   <FilesMatch "\.(ico|css|js|gif|jpe?g|png)\?[0-9]+$">
+       Header unset Last-Modified
+       Header unset ETag
+       FileETag None
        ExpiresActive On
        ExpiresDefault "access plus 1 year"
    </FilesMatch>
